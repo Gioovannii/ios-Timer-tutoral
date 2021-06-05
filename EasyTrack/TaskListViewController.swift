@@ -154,5 +154,24 @@ extension TaskListViewController {
 
 
 extension TaskListViewController {
-  
+  func showCongratulationAnimation() {
+    // Calculate right height base on device screen height
+    height = UIScreen.main.bounds.height + balloon.frame.size.height
+    // 2 center ballon outside of screen for set its visibility
+    balloon.center = CGPoint(x: UIScreen.main.bounds.width / 2, y: height + balloon.frame.size.height / 2)
+    balloon.isHidden = false
+    
+    //3 set startTime and calculatre his endTime by addind the animation duration
+    startTime = Date().timeIntervalSince1970
+    endTime = animationDuration + startTime!
+    
+    // 4 Start animation Timer and have it update the progress of the animation so 60 time per second
+    animationTimer = Timer.scheduledTimer(withTimeInterval: 1 / 60, repeats: true) { timer in
+      // TODO: - Animation here
+      self.updateAnimation()
+
+    }
+  }
+   
+   
 }

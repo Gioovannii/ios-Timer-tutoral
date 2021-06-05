@@ -117,6 +117,8 @@ extension TaskListViewController {
 
 extension TaskListViewController {
   @objc func updateTimer() {
+    if let fireDateDescription = timer?.fireDate.description { print(fireDateDescription) }
+    
     // 1 check if there is any visible rows containing tasks
     guard let visibleRowsIndexPaths = tableView.indexPathsForVisibleRows else { return }
     

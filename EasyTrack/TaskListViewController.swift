@@ -114,3 +114,18 @@ extension TaskListViewController {
     present(alertController, animated: true, completion: nil)
   }
 }
+
+extension TaskListViewController {
+  @objc func updateTimer() {
+    // 1 check if there is any visible rows containing tasks
+    guard let visibleRowsIndexPaths = tableView.indexPathsForVisibleRows else { return }
+    
+    for indexPath in visibleRowsIndexPaths {
+      // 2 Calls updateTime for every visible cell
+      if let cell = tableView.cellForRow(at: indexPath) as? TaskTableViewCell {
+        cell.updateTime()
+      }
+    }
+  }
+
+}

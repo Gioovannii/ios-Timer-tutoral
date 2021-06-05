@@ -128,4 +128,12 @@ extension TaskListViewController {
     }
   }
 
+  func createTimer() {
+    // 1 check if timer contain an instance of timer
+    if timer == nil {
+      // 2 if not set timer to a repeating timer which call updateTimer
+      timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(updateTimer), userInfo: nil, repeats: true)
+      timer?.tolerance = 0.1
+    }
+  }
 }

@@ -143,6 +143,7 @@ extension TaskListViewController {
     if timer == nil {
       // 2 if not set timer to a repeating timer which call updateTimer
       let timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(updateTimer), userInfo: nil, repeats: true)
+      // Timer use the main thread when his busy the UI became unresponsive !!
       RunLoop.current.add(timer, forMode: .common)
       timer.tolerance = 0.1
       

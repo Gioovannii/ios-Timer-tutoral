@@ -172,6 +172,28 @@ extension TaskListViewController {
 
     }
   }
+  
+  func updateAnimation() {
+    // 1 check if endTime and start time is not nil
+    guard let endTime = endTime, let startTime = startTime else { return }
+    
+    // 2 save current time to a constant
+    let now = Date().timeIntervalSince1970
+    
+    // 3 Ensure current time has not passed the end time or invalidate  and hide balloon
+    if now >= endTime {
+      animationTimer?.invalidate()
+      balloon.isHidden = true
+    }
+    
+    // 4 calculate animation percentage and desired y coordinate
+    let percentage = (now - startTime) * 100 / animationDuration
+    let y = height - ((height + balloon.frame.height / 2) / 100 * CGFloat(percentage))
+    
+    // 5 Set ballon center position 
+    balloon.center = CGPoint(x: balloon.center.x + CGFloat.random(in:  -0.5...0.5), y: y)
+    
+  }
    
    
 }

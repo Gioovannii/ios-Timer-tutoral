@@ -33,6 +33,7 @@ class TaskListViewController: UIViewController {
   @IBOutlet weak var balloon: Balloon!
   
   var taskList: [Task] = []
+  var timer: Timer?
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -76,6 +77,7 @@ extension TaskListViewController: UITableViewDataSource {
 // MARK: - Actions
 extension TaskListViewController {
   @objc func presentAlertController(_ sender: UIBarButtonItem) {
+    createTimer()
     let alertController = UIAlertController(title: "Task name",
       message: nil,
       preferredStyle: .alert)

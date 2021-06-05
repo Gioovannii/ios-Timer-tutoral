@@ -32,6 +32,14 @@ class TaskListViewController: UIViewController {
   @IBOutlet weak var tableView: UITableView!
   @IBOutlet weak var balloon: Balloon!
   
+  // Properties for handleAnimation timer, animation startand end.
+  // animation duration and animation height
+  
+  var animationTimer: Timer?
+  var startTime: TimeInterval?, endTime: TimeInterval?
+  let animationDuration = 3.0
+  var height: CGFloat = 0
+  
   var taskList: [Task] = []
   var timer: Timer?
   
